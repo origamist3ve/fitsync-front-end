@@ -5,13 +5,14 @@ import { UserContext } from "../../contexts/UserContext.jsx";
 
 function SignUpForm() {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+//   const { setUser } = useContext(UserContext);
 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     passwordConf: "",
   });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,14 +23,25 @@ function SignUpForm() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+        await signUp(formData);
+        // Proceed with successful signup actions
+        navigate("/");
+    } catch (error) {
+        setError(error.message); // Assuming you have a state variable for errors
+        console.error("Signup form submission error:", error);
+    }
+};
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
 
-    const newUser = await signUp(formData);
+//     const newUser = await signUp(formData);
     
-    setUser(newUser);
-    navigate("/");
-  };
+//     setUser(newUser);
+//     navigate("/");
+//   };
 
   return (
     <main>

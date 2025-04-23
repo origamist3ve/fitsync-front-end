@@ -1,8 +1,10 @@
 import React from "react";
 
-export default function DashboardHeader({ user, workouts }) {
+export default function DashboardHeader({ user, workouts = [] }) {
+  if (!user) return <p>Loading user data...</p>;
+
   const lastWorkoutDate = workouts.length
-    ? new Date(workouts[0].date) // assuming workouts are sorted newest first
+    ? new Date(workouts[0].date) // assumes newest first
     : null;
 
   const daysSinceLast = lastWorkoutDate
@@ -12,7 +14,9 @@ export default function DashboardHeader({ user, workouts }) {
   return (
     <header style={{ padding: "1rem", backgroundColor: "#fffaf0" }}>
       <h1>Welcome, {user.username}!</h1>
-      <p>It's been <strong>{daysSinceLast}</strong> days since your last workout</p>
+      <p>
+        It's been <strong>{daysSinceLast}</strong> day{daysSinceLast === 1 ? "" : "s"} since your last workout
+      </p>
     </header>
   );
 }
