@@ -18,8 +18,8 @@ export const index = async () => {
 
     return data;
   } catch (error) {
-    console.log(err);
-    throw new Error(err);
+    console.log(error);
+    throw new Error(error);
   }
 };
 
@@ -41,7 +41,7 @@ export const show = async (userId) => {
 
     return data;
   } catch (error) {
-    console.log(err);
-    throw new Error(err);
+    console.log(error);
+    throw new Error(error);
   }
 };

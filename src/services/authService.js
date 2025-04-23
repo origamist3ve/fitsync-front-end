@@ -11,9 +11,12 @@ export const signUp = async (formData) => {
     const data = await res.json();
     console.log("Data: ", data);
 
-    if (data.err) {
-      throw new Error(data.err);
+    if (!res.ok) {
+        throw new Error(data.err || "An error occurred during signup");
     }
+    // if (data.err) {
+    //   throw new Error(data.err);
+    // }
 
     if (!data.token) {
       throw new Error("Invalid response from server");
@@ -49,6 +52,6 @@ export const signIn = async (formData) => {
     return JSON.parse(atob(data.token.split(".")[1])).payload;
   } catch (err) {
     console.log(err);
-    throw new Error(err);
+    throw new Error(err.message || "An unknown error occurred during signup");
   }
 };
