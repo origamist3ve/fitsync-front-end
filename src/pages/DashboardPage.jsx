@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import DashboardHeader from "../components/DashboardHeader";
-import WorkoutCard from "../components/WorkoutCard";
-import FooterNav from "../components/FooterNav";
+import DashboardHeader from "../components/DashboardHeader/DashboardHeader.jsx";
+import WorkoutCard from "../components/WorkoutCard/WorkoutCard.jsx";
+import FooterNav from "../components/FooterNav/FooterNav.jsx";
 
 export default function DashboardPage({ user }) {
   const [workouts, setWorkouts] = useState([]);
