@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
+import {useNavigate} from "react-router-dom";
 import WorkoutCard from "../components/WorkoutCard/WorkoutCard.jsx";
 import FooterNav from "../components/FooterNav/FooterNav.jsx";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader.jsx";
@@ -6,11 +7,16 @@ import DashboardHeader from "../components/DashboardHeader/DashboardHeader.jsx";
 export default function FeedPage({ user }) {
     const [workouts, setWorkouts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchWorkouts = async () => {
             try {
                 const token = localStorage.getItem("token");
+                if (!token) {
+                    navigate("/sign-in");
+                    return;
+                }
 
                 const res = await fetch("http://localhost:3000/api/workouts", {
                     method: "GET",
