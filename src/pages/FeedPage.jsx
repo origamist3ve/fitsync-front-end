@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import WorkoutCard from "../components/WorkoutCard/WorkoutCard.jsx";
 import FooterNav from "../components/FooterNav/FooterNav.jsx";
+import DashboardHeader from "../components/DashboardHeader/DashboardHeader.jsx";
 
-export default function FeedPage() {
+export default function FeedPage({ user }) {
     const [workouts, setWorkouts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -47,8 +48,9 @@ export default function FeedPage() {
                 <p>No workouts have been posted yet.</p>
             )}
 
+
             {workouts.map((workout) => (
-                <WorkoutCard key={workout._id} workout={workout} />
+                <WorkoutCard key={workout._id} workout={workout} user={user} />
             ))}
 
         </div>

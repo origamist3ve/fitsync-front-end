@@ -27,7 +27,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage user={user} />} />
         <Route path="/add-workout" element={<AddWorkoutPage />} />
         <Route path="/workout/new" element={<AddWorkoutForm />} />
-        <Route path="/feed" element={<FeedPage />} />
+        <Route path="/feed" element={<FeedPage user={user} />} />
       </Routes>
     </>
   );
