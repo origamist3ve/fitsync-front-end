@@ -25,6 +25,7 @@ export default function DashboardPage({ user }) {
   
         const data = await res.json();
         setWorkouts(data);
+        console.log(data);
   
         if (data.length > 0) {
           const latest = data.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
@@ -54,7 +55,6 @@ export default function DashboardPage({ user }) {
           <WorkoutCard key={workout._id} workout={workout} />
         ))}
       </div>
-
       <FooterNav />
     </div>
   );
