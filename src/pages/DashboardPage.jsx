@@ -11,7 +11,7 @@ export default function DashboardPage({ user }) {
       try {
         const token = localStorage.getItem("token"); // or sessionStorage, etc.
   
-        const res = await fetch("http://localhost:3000/api/workouts", {
+        const res = await fetch("http://localhost:3000/api/users/:userId/workouts", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
