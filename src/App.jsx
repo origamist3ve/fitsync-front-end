@@ -5,6 +5,8 @@ import Landing from "./components/Landing/Landing.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import Show from "./components/Show/Show.jsx";
 import DashboardPage from "./pages/DashboardPage";
+import AddWorkoutPage from "./pages/AddWorkoutPage";
+import AddWorkoutForm from "./components/AddWorkoutForm/AddWorkoutForm.jsx";
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext.jsx";
 import { Routes, Route } from "react-router";
@@ -22,6 +24,8 @@ function App() {
         <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/users/:id" element={<Show />} />
         <Route path="/dashboard" element={<DashboardPage user={user} />} />
+        <Route path="/add-workout" element={<AddWorkoutPage />} />
+        <Route path="/workout/new" element={<AddWorkoutForm />} />
       </Routes>
     </>
   );
