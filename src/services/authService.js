@@ -1,12 +1,17 @@
+// import "dotenv/config";
+
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/users`;
+console.log(BASE_URL)
 
 export const signUp = async (formData) => {
   try {
+  
     const res = await fetch(`${BASE_URL}/sign-up`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
+    console.log(res)
 
     const data = await res.json();
     console.log("Data: ", data);
