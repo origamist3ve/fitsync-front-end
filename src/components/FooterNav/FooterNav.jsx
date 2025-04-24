@@ -17,7 +17,7 @@ export default function FooterNav() {
       padding: "1rem"
     }}>
       <button onClick={() => navigate("/feed")}>Feed</button>
-      <button onClick={() => navigate("/workouts/new")}>➕ Add</button>
+      <button onClick={() => navigate("/workout/new")}>➕ Add</button>
       <button onClick={() => navigate("/progress")}>Progress</button>
     </footer>
   );

@@ -16,7 +16,8 @@ export default function WorkoutCard({ workout }) {
     >
       <p><strong>Date:</strong> {new Date(workout.date).toLocaleDateString()}</p>
       <p><strong>Time:</strong> {new Date(workout.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-      <p><strong>Type:</strong> {workout.type}</p>
+      <p><strong>Type:</strong> {workout.workoutType}</p>
+        <p><strong>Workout:</strong> {workout.workout}</p>
       <p><strong>Duration:</strong> {workout.duration} minutes</p>
     </div>
   );
