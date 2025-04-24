@@ -3,6 +3,7 @@ import DashboardHeader from "../components/DashboardHeader/DashboardHeader.jsx";
 import WorkoutCard from "../components/WorkoutCard/WorkoutCard.jsx";
 import FooterNav from "../components/FooterNav/FooterNav.jsx";
 
+
 export default function DashboardPage({ user }) {
   const [workouts, setWorkouts] = useState([]);
 
