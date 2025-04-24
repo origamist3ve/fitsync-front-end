@@ -58,7 +58,13 @@ export default function DashboardPage({ user }) {
 
         <div className="workout-list">
           {workouts.map(workout => (
-              <WorkoutCard key={workout._id} workout={workout} userId={user._id} onDelete={removeWorkout} />
+              <WorkoutCard
+                  key={workout._id}
+                  workout={workout}
+                  userId={user._id}
+                  onDelete={removeWorkout}
+                  showDelete={true} 
+              />
           ))}
         </div>
         <FooterNav />
