@@ -1,17 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import DeleteWorkoutsButton from "../DeleteWorkout/DeleteWorkout.jsx";
 
-export default function WorkoutCard({ workout }) {
+export default function WorkoutCard({ workout,onDelete,userId } ) {
   const navigate = useNavigate();
 
   return (
     <div
-      onClick={() => navigate(`/workouts/${workout._id}`)}
       className="workout-card"
       style={{
         borderBottom: "1px solid #ddd",
         padding: "1rem",
-        cursor: "pointer"
       }}
     >
       <p><strong>Date:</strong> {new Date(workout.date).toLocaleDateString()}</p>
@@ -19,6 +18,12 @@ export default function WorkoutCard({ workout }) {
       <p><strong>Type:</strong> {workout.workoutType}</p>
         <p><strong>Workout:</strong> {workout.workout}</p>
       <p><strong>Duration:</strong> {workout.duration} minutes</p>
+        <DeleteWorkoutsButton
+            workoutId={workout._id}
+            userId={userId}
+            onDelete={onDelete}
+        />
+
     </div>
   );
 }

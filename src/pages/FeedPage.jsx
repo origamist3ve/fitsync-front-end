@@ -48,8 +48,9 @@ export default function FeedPage({ user }) {
                 <p>No workouts have been posted yet.</p>
             )}
 
+
             {workouts.map((workout) => (
-                <WorkoutCard key={workout._id} workout={workout} />
+                <WorkoutCard key={workout._id} workout={workout} user={user} />
             ))}
 
         </div>
