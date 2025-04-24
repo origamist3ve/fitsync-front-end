@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import Show from "./components/Show/Show.jsx";
 import DashboardPage from "./pages/DashboardPage";
 import AddWorkoutPage from "./pages/AddWorkoutPage";
+import FeedPage from "./pages/FeedPage";
 import AddWorkoutForm from "./components/AddWorkoutForm/AddWorkoutForm.jsx";
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext.jsx";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage user={user} />} />
         <Route path="/add-workout" element={<AddWorkoutPage />} />
         <Route path="/workout/new" element={<AddWorkoutForm />} />
+        <Route path="/feed" element={<FeedPage />} />
       </Routes>
     </>
   );
