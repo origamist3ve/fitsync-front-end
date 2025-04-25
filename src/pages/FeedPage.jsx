@@ -1,8 +1,9 @@
-import React, { useEffect, useState, } from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import WorkoutCard from "../components/WorkoutCard/WorkoutCard.jsx";
 import FooterNav from "../components/FooterNav/FooterNav.jsx";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader.jsx";
+import "./FeedPage.css";
 
 export default function FeedPage({ user }) {
     const [workouts, setWorkouts] = useState([]);
@@ -24,46 +25,45 @@ export default function FeedPage({ user }) {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
-
                 });
 
-        if (!res.ok) {
-            throw new Error("Failed to fetch feed");
-        }
+                if (!res.ok) {
+                    throw new Error("Failed to fetch feed");
+                }
 
-        const data = await res.json();
-        setWorkouts(data);
-        } catch (err) {
-            console.error("Error fetching feed:", err);
-        } finally {
-            setLoading(false);
-        }
-    };
+                const data = await res.json();
+                setWorkouts(data);
+            } catch (err) {
+                console.error("Error fetching feed:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    fetchWorkouts();
+        fetchWorkouts();
     }, []);
 
     return (
         <div className="feed-page">
-            <h2> All Workouts</h2>
-        
-        {loading && <p> Loading feed...</p>}
+            <h2>Workout Feed</h2>
+            
+            {loading && <p className="loading-message">Loading feed...</p>}
 
-        <div className="workout-list">
-            {workouts.length === 0 && !loading && (
-                <p>No workouts have been posted yet.</p>
-            )}
+            <div className="workout-list">
+                {workouts.length === 0 && !loading && (
+                    <p className="no-workouts-message">No workouts have been posted yet.</p>
+                )}
 
+                {workouts.map((workout) => (
+                    <WorkoutCard 
+                        key={workout._id} 
+                        workout={workout} 
+                        user={user}
+                    />
+                ))}
+            </div>
 
-            {workouts.map((workout) => (
-                <WorkoutCard key={workout._id} workout={workout} user={user} />
-            ))}
-
-        </div>
-
-        <FooterNav />
-        
+            <FooterNav />
         </div>
     );
-
 }

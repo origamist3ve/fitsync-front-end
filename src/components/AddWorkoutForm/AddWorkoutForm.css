@@ -143,243 +143,123 @@ form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin-top: 2rem;
-  animation: formContentAppear 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s backwards;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: calc(100% - 4rem);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-@keyframes formContentAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .form-group {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 1.8rem;
-  border-radius: 16px;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.form-group::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--gradient-blue);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.form-group:focus-within {
-  border-color: var(--fitsync-blue-light);
-  box-shadow: 
-    0 8px 16px rgba(52, 152, 219, 0.1),
-    0 2px 4px rgba(52, 152, 219, 0.1);
-  transform: translateY(-2px);
-}
-
-.form-group:focus-within::before {
-  opacity: 1;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  width: 100%;
 }
 
 label {
-  color: var(--fitsync-dark);
+  display: block;
+  margin-bottom: 0.75rem;
   font-weight: 600;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  transition: color 0.3s ease;
+  color: var(--fitsync-dark);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.form-group:focus-within label {
-  color: var(--fitsync-blue);
-}
-
-label svg {
-  transition: all 0.3s ease;
-}
-
-.form-group:focus-within label svg {
-  transform: scale(1.1);
-  stroke: var(--fitsync-blue);
-}
-
-input {
-  padding: 1.2rem;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.9);
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background: white;
+  font-size: 1rem;
   color: var(--fitsync-dark);
 }
 
-input:hover {
-  border-color: rgba(52, 152, 219, 0.3);
-}
-
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
-  border-color: var(--fitsync-blue);
-  background: white;
-  box-shadow: 
-    0 0 0 4px rgba(52, 152, 219, 0.15);
-}
-
-input::placeholder {
-  color: rgba(26, 26, 46, 0.4);
-  transition: color 0.3s ease;
-}
-
-input:focus::placeholder {
-  color: rgba(26, 26, 46, 0.6);
+  border-color: var(--fitsync-orange);
+  box-shadow: 0 0 0 3px rgba(255, 87, 51, 0.1);
 }
 
 button[type="submit"] {
   grid-column: 1 / -1;
   background: var(--gradient-orange);
   color: white;
-  padding: 1.4rem;
+  padding: 1.25rem;
   border: none;
-  border-radius: 16px;
-  font-size: 1.2rem;
-  font-weight: 700;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   text-transform: uppercase;
   letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 8px 20px rgba(255, 87, 51, 0.3),
-    0 2px 4px rgba(255, 87, 51, 0.2);
-}
-
-button[type="submit"]::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
+  margin-top: 1.5rem;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: 0.5s;
 }
 
 button[type="submit"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 24px rgba(255, 87, 51, 0.4),
-    0 4px 8px rgba(255, 87, 51, 0.2);
-}
-
-button[type="submit"]:hover::before {
-  left: 100%;
+  opacity: 0.95;
 }
 
 button[type="submit"]:active {
-  transform: translateY(1px);
-}
-
-/* Custom styles for date input */
-input[type="date"] {
-  color: var(--fitsync-dark);
-  text-transform: uppercase;
-  padding-right: 1rem;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
   opacity: 1;
-}
-
-/* Custom styles for number input */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  main {
-    margin: 2rem;
-    padding: 2rem;
-  }
-  
   form {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    width: calc(100% - 2rem);
   }
-  
-  h2 {
-    font-size: 2rem;
+
+  .form-group {
+    padding: 1.25rem;
   }
-  
-  .logo-icon {
-    width: 80px;
-    height: 80px;
+
+  input,
+  select,
+  textarea {
+    padding: 0.75rem;
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 }
 
 @media (max-width: 640px) {
   form {
-    grid-template-columns: 1fr;
+    padding: 1.25rem;
+    margin: 0.75rem auto;
+    width: calc(100% - 1.5rem);
   }
-  
-  main {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-  
-  h2 {
-    font-size: 1.8rem;
-  }
-  
-  .logo-icon {
-    width: 70px;
-    height: 70px;
-  }
-  
+
   .form-group {
-    padding: 1.4rem;
-  }
-  
-  input {
     padding: 1rem;
   }
-  
+
   button[type="submit"] {
-    padding: 1.2rem;
+    padding: 1rem;
   }
 }
 
@@ -418,72 +298,38 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 }
 
-.welcome-message {
-  text-align: center;
-  margin-bottom: 2rem;
-  position: relative;
-  animation: welcomeAppear 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.welcome-text {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--fitsync-dark);
-  margin-right: 0.5rem;
-  opacity: 0.7;
-}
-
-.username {
-  font-size: 2.8rem;
-  font-weight: 800;
-  background: linear-gradient(
-    45deg,
-    var(--fitsync-orange) 0%,
-    var(--fitsync-orange-light) 30%,
-    var(--fitsync-blue) 70%,
-    var(--fitsync-blue-light) 100%
-  );
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientFlow 3s ease infinite;
-  display: inline-block;
-  position: relative;
-  padding: 0 0.5rem;
-  text-transform: capitalize;
-}
-
-.username::after {
+/* Add shimmer effect to form elements on hover */
+.form-row > *::after {
   content: '';
   position: absolute;
-  width: 110%;
-  height: 5px;
-  background: var(--gradient-blue);
-  bottom: -5px;
-  left: -5%;
-  border-radius: 5px;
-  transform-origin: left;
-  animation: underlineExpand 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: 0.6s;
+  opacity: 0;
 }
 
-.welcome-accent {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  right: -20px;
-  top: -10px;
-  background: var(--gradient-orange);
-  border-radius: 50%;
-  opacity: 0.2;
-  filter: blur(10px);
-  animation: pulseAccent 2s ease-in-out infinite;
+.form-row > *:hover::after {
+  opacity: 1;
 }
 
-@keyframes welcomeAppear {
+/* Field animations */
+.form-group {
+  animation: fieldAppear 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+@keyframes fieldAppear {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -491,34 +337,24 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 }
 
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Stagger field animations */
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+
+/* Add subtle pulse animation to submit button */
+@keyframes subtlePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 }
 
-@keyframes underlineExpand {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
+button[type="submit"] {
+  animation: subtlePulse 3s infinite;
 }
 
-@keyframes pulseAccent {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.2;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.3;
-  }
+button[type="submit"]:hover {
+  animation: none;
 }
