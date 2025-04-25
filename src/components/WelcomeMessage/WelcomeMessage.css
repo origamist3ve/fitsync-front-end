@@ -19,19 +19,41 @@
   background: linear-gradient(
     45deg,
     var(--fitsync-orange) 0%,
-    var(--fitsync-orange-light) 30%,
-    var(--fitsync-blue) 70%,
-    var(--fitsync-blue-light) 100%
+    var(--fitsync-orange-light) 15%,
+    #FFD700 30%,
+    var(--fitsync-blue) 45%,
+    var(--fitsync-blue-light) 60%,
+    #FFD700 75%,
+    var(--fitsync-orange-light) 90%,
+    var(--fitsync-orange) 100%
   );
-  background-size: 200% 200%;
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientFlow 3s ease infinite;
+  animation: gradientFlow 8s ease infinite, shimmer 3s infinite;
   display: inline-block;
   position: relative;
   padding: 0 0.5rem;
   text-transform: capitalize;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.username::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -20%;
+  right: -20%;
+  bottom: -10%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: rotate(25deg) translateX(-100%);
+  animation: shimmerEffect 3s infinite;
 }
 
 .username::after {
@@ -39,12 +61,19 @@
   position: absolute;
   width: 110%;
   height: 5px;
-  background: var(--gradient-blue);
+  background: linear-gradient(
+    90deg,
+    var(--fitsync-orange),
+    var(--fitsync-blue),
+    var(--fitsync-orange)
+  );
+  background-size: 200% 100%;
   bottom: -5px;
   left: -5%;
   border-radius: 5px;
   transform-origin: left;
-  animation: underlineExpand 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards;
+  animation: underlineExpand 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards,
+             underlineShimmer 3s linear infinite;
 }
 
 .welcome-accent {
@@ -83,12 +112,42 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    opacity: 0.97;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.97;
+  }
+}
+
+@keyframes shimmerEffect {
+  0% {
+    transform: rotate(25deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(25deg) translateX(200%);
+  }
+}
+
 @keyframes underlineExpand {
   from {
     transform: scaleX(0);
   }
   to {
     transform: scaleX(1);
+  }
+}
+
+@keyframes underlineShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 

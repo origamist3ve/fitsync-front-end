@@ -1,0 +1,171 @@
+.feed-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem 6rem;
+}
+
+.feed-header {
+  padding: 2rem;
+  background: linear-gradient(
+    to right bottom,
+    #fffaf0,
+    #fff5eb
+  );
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    0 10px 15px rgba(0, 0, 0, 0.03);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.feed-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--fitsync-orange),
+    var(--fitsync-orange-light)
+  );
+}
+
+.feed-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fitsync-dark);
+  margin-bottom: 0;
+}
+
+.feed-title {
+  color: var(--fitsync-orange);
+  font-weight: 900;
+  font-size: 2rem;
+  display: inline-block;
+  padding: 0 0.5rem;
+  margin: 0 0.2rem;
+  background: linear-gradient(120deg, rgba(255, 87, 51, 0.1) 0%, rgba(255, 87, 51, 0.2) 100%);
+  border-radius: 8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.workout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.workout-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 4px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.workout-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.workout-card p {
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  color: var(--fitsync-dark);
+}
+
+.workout-card strong {
+  color: var(--fitsync-orange);
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.workout-card ul {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.workout-card li {
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.workout-card form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.workout-card input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.workout-card button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: var(--gradient-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.workout-card button:hover {
+  opacity: 0.9;
+}
+
+.delete-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .feed-page {
+    padding: 1rem 0.5rem 5rem;
+  }
+
+  .workout-list {
+    padding: 0.5rem;
+  }
+
+  .workout-card {
+    padding: 1rem 1.5rem;
+    max-width: 100%;
+  }
+} 
