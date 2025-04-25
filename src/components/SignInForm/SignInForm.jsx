@@ -27,7 +27,7 @@ const SignInForm = () => {
     const signedInUser = await signIn(formData);
 
     setUser(signedInUser);
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (

@@ -56,7 +56,7 @@ export default function DashboardPage({ user }) {
                   workout={workout}
                   userId={user._id}
                   onDelete={removeWorkout}
-                  showDelete={true} 
+                  showDelete={true}
               />
           ))}
         </div>
