@@ -18,7 +18,7 @@ return (
       <ul>
         <li>Welcome, {user.username}</li>
         <li>
-          <Link to="/">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
           <button onClick={handleSignOut}>Sign Out</button>
