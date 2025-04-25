@@ -1,0 +1,104 @@
+.welcome-message {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  animation: welcomeAppear 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.welcome-text {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--fitsync-dark);
+  margin-right: 0.5rem;
+  opacity: 0.7;
+}
+
+.username {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(
+    45deg,
+    var(--fitsync-orange) 0%,
+    var(--fitsync-orange-light) 30%,
+    var(--fitsync-blue) 70%,
+    var(--fitsync-blue-light) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 3s ease infinite;
+  display: inline-block;
+  position: relative;
+  padding: 0 0.5rem;
+  text-transform: capitalize;
+}
+
+.username::after {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 5px;
+  background: var(--gradient-blue);
+  bottom: -5px;
+  left: -5%;
+  border-radius: 5px;
+  transform-origin: left;
+  animation: underlineExpand 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards;
+}
+
+.welcome-accent {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: -20px;
+  top: -10px;
+  background: var(--gradient-orange);
+  border-radius: 50%;
+  opacity: 0.2;
+  filter: blur(10px);
+  animation: pulseAccent 2s ease-in-out infinite;
+}
+
+@keyframes welcomeAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes underlineExpand {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pulseAccent {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+} 

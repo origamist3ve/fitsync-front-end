@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addWorkout } from "../../services/workoutService"; 
-
+import "./AddWorkoutForm.css";
 const AddWorkoutForm = () => {
   const navigate = useNavigate();
 
