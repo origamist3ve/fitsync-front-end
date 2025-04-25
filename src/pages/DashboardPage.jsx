@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader.jsx";
 import WorkoutCard from "../components/WorkoutCard/WorkoutCard.jsx";
 import FooterNav from "../components/FooterNav/FooterNav.jsx";
-
-
-
+import "./DashboardPage.css";
 
 export default function DashboardPage({ user }) {
   const [workouts, setWorkouts] = useState([]);
@@ -15,7 +13,7 @@ export default function DashboardPage({ user }) {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const token = localStorage.getItem("token"); // or sessionStorage, etc.
+        const token = localStorage.getItem("token");
 
         const res = await fetch("http://localhost:3000/api/users/:userId/workouts", {
           method: "GET",
@@ -32,11 +30,6 @@ export default function DashboardPage({ user }) {
         const data = await res.json();
         setWorkouts(data);
         console.log(data);
-
-        if (data.length > 0) {
-          const latest = data.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
-
-        }
       } catch (err) {
         console.error("❌ Error fetching workouts:", err);
       }

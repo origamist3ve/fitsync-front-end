@@ -1,4 +1,5 @@
 import React from "react";
+import "./DashboardHeader.css";
 
 export default function DashboardHeader({ user, workouts = [] }) {
   if (!user) return <p>Loading user data...</p>;
@@ -12,9 +13,11 @@ export default function DashboardHeader({ user, workouts = [] }) {
     : "—";
 
   return (
-    <header style={{ padding: "1rem", backgroundColor: "#fffaf0" }}>
-      <h1>Welcome, {user.username}!</h1>
-      <p>
+    <header className="dashboard-header">
+      <h1 className="welcome-text">
+        Welcome, <span className="username">{user.username}</span>!
+      </h1>
+      <p className="stats-text">
         It's been <strong>{daysSinceLast}</strong> day{daysSinceLast === 1 ? "" : "s"} since your last workout
       </p>
     </header>

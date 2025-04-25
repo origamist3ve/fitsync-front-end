@@ -1,0 +1,63 @@
+.dashboard-header {
+  padding: 2rem;
+  background: linear-gradient(
+    to right bottom,
+    #fffaf0,
+    #fff5eb
+  );
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    0 10px 15px rgba(0, 0, 0, 0.03);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--fitsync-orange),
+    var(--fitsync-orange-light)
+  );
+}
+
+.welcome-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fitsync-dark);
+  margin-bottom: 1rem;
+}
+
+.username {
+  color: var(--fitsync-orange);
+  font-weight: 900;
+  font-size: 2.2rem;
+  display: inline-block;
+  padding: 0 0.5rem;
+  margin: 0 0.2rem;
+  background: linear-gradient(120deg, rgba(255, 87, 51, 0.1) 0%, rgba(255, 87, 51, 0.2) 100%);
+  border-radius: 8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats-text {
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.stats-text strong {
+  color: var(--fitsync-blue);
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 0.2rem 0.5rem;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 6px;
+}

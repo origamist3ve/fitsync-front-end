@@ -45,7 +45,11 @@ export default function FeedPage({ user }) {
 
     return (
         <div className="feed-page">
-            <h2>Workout Feed</h2>
+            <header className="feed-header">
+                <h2>
+                    <span className="feed-title">Workout Feed</span>
+                </h2>
+            </header>
             
             {loading && <p className="loading-message">Loading feed...</p>}
 
