@@ -1,4 +1,4 @@
-// import "dotenv/config";
+
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/users`;
 console.log(BASE_URL)
@@ -19,9 +19,7 @@ export const signUp = async (formData) => {
     if (!res.ok) {
         throw new Error(data.err || "An error occurred during signup");
     }
-    // if (data.err) {
-    //   throw new Error(data.err);
-    // }
+    
 
     if (!data.token) {
       throw new Error("Invalid response from server");
