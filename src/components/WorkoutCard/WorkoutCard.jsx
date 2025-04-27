@@ -61,8 +61,11 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
                 <>
                     <p><strong>Workout:</strong> {workout.workout}</p>
                     <p><strong>Duration:</strong> {workout.duration} minutes</p>
+                    {workout.sets && (
+                        <p><strong>Sets:</strong> {workout.sets}</p>
+                    )}
 
-                    {/* Edit & Delete buttons (only show when expanded and owner) */}
+                    {/* Edit & Delete buttons */}
                     {showDelete && isOwner && (
                         <div style={{ marginTop: "1rem", display: "flex", gap: "1rem" }}>
                             <DeleteWorkoutsButton
@@ -76,6 +79,7 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
 
                     {/* Comments section */}
                     <div className="comments-section" onClick={(e) => e.stopPropagation()}>
+                        {/* Comments */}
                         <ul>
                             <h2>Comments</h2>
                             {comments.map((c, idx) => (
@@ -84,6 +88,8 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
                                 </li>
                             ))}
                         </ul>
+
+                        {/* Add Comment */}
                         <form onSubmit={handleCommentSubmit}>
                             <input
                                 type="text"
