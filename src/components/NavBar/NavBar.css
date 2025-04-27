@@ -1,0 +1,101 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    background: var(--fitsync-dark, #1a1a2e);
+    color: white;
+    height: 8vh;
+    margin: 0;
+    border: none;
+    display: flex;
+    align-items: center; /* Center everything vertically inside navbar */
+    box-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.1),
+            0 8px 12px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Force both logo and links center */
+    padding: 0 1.5rem;
+    height: 100%; /* ⬅️ Important: match navbar height */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%; /* ⬅️ Important: stretch logo to full height */
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center; /* ⬅️ Make text inside centered */
+    height: 100%;
+}
+
+.logo a:hover {
+    color: var(--fitsync-orange, #FF5733);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.25s ease;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links li a:hover {
+    color: var(--fitsync-orange, #FF5733);
+}
+
+.signout-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.signout-btn:hover {
+    background-color: var(--fitsync-orange, #FF5733);
+    border-color: var(--fitsync-orange, #FF5733);
+    color: white;
+}

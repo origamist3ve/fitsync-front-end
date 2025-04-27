@@ -12,6 +12,7 @@ import EditWorkoutPage from "./pages/EditWorkoutPage";
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext.jsx";
 import { Routes, Route } from "react-router";
+import LandingPage from "./pages/LandingPage.jsx";
 import "./App.css";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={user ? <Dashboard /> : <Landing />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/users/:id" element={<Show />} />

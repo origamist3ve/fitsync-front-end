@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import workoutOptions from "../components/WorkoutOptions/WorkoutsOptions.jsx";
 
 export default function EditWorkoutPage() {
     const { workoutId } = useParams();
@@ -10,6 +11,7 @@ export default function EditWorkoutPage() {
         workout: "",
         duration: "",
         date: "",
+        sets: "",
     });
 
     const [loading, setLoading] = useState(true);
@@ -30,10 +32,11 @@ export default function EditWorkoutPage() {
 
                 const data = await res.json();
                 setWorkoutData({
-                    workoutType: data.workoutType,
-                    workout: data.workout,
-                    duration: data.duration,
+                    workoutType: data.workoutType || "",
+                    workout: data.workout || "",
+                    duration: data.duration || "",
                     date: data.date ? new Date(data.date).toISOString().split("T")[0] : "",
+                    sets: data.sets || "",
                 });
             } catch (err) {
                 setError(err.message);
@@ -47,7 +50,12 @@ export default function EditWorkoutPage() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setWorkoutData((prev) => ({ ...prev, [name]: value }));
+
+        setWorkoutData((prev) => ({
+            ...prev,
+            [name]: value,
+            ...(name === "workoutType" && { workout: "" }), // if workoutType changes, reset workout
+        }));
     };
 
     const handleSubmit = async (e) => {
@@ -56,7 +64,6 @@ export default function EditWorkoutPage() {
             const decodedToken = JSON.parse(atob(token.split(".")[1]));
             const userId = decodedToken.payload._id;
 
-            // 🛠 Convert date string into a timestamp (milliseconds)
             const updatedWorkoutData = {
                 ...workoutData,
                 date: new Date(workoutData.date).getTime(),
@@ -68,7 +75,7 @@ export default function EditWorkoutPage() {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(updatedWorkoutData), // send updated version
+                body: JSON.stringify(updatedWorkoutData),
             });
 
             if (!res.ok) {
@@ -82,7 +89,6 @@ export default function EditWorkoutPage() {
         }
     };
 
-
     if (loading) return <p>Loading workout...</p>;
     if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
@@ -90,49 +96,81 @@ export default function EditWorkoutPage() {
         <div className="edit-workout-page">
             <h2>Edit Workout</h2>
             <form onSubmit={handleSubmit}>
-                <label>
-                    Workout Type:
-                    <input
-                        type="text"
+                {/* Workout Type select */}
+                <div>
+                    <label>Workout Type:</label>
+                    <select
                         name="workoutType"
                         value={workoutData.workoutType}
                         onChange={handleChange}
-                    />
-                </label>
-                <br />
+                        required
+                    >
+                        <option value="">-- Select a Workout Type --</option>
+                        {Object.keys(workoutOptions).map((type) => (
+                            <option key={type} value={type}>
+                                {type}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-                <label>
-                    Workout Description:
-                    <input
-                        type="text"
+                {/* Workout select */}
+                <div>
+                    <label>Workout:</label>
+                    <select
                         name="workout"
                         value={workoutData.workout}
                         onChange={handleChange}
-                    />
-                </label>
-                <br />
+                        required
+                        disabled={!workoutData.workoutType}
+                    >
+                        <option value="">-- Select a Workout --</option>
+                        {workoutData.workoutType &&
+                            workoutOptions[workoutData.workoutType].map((workout) => (
+                                <option key={workout} value={workout}>
+                                    {workout}
+                                </option>
+                            ))}
+                    </select>
+                </div>
 
-                <label>
-                    Duration (mins):
+                {/* Sets input */}
+                <div>
+                    <label>Sets:</label>
+                    <input
+                        type="number"
+                        name="sets"
+                        value={workoutData.sets}
+                        onChange={handleChange}
+                        min="1"
+                        max="20"
+                        required
+                    />
+                </div>
+
+                {/* Duration input */}
+                <div>
+                    <label>Duration (minutes):</label>
                     <input
                         type="number"
                         name="duration"
                         value={workoutData.duration}
                         onChange={handleChange}
+                        required
                     />
-                </label>
-                <br />
+                </div>
 
-                <label>
-                    Date:
+                {/* Date input */}
+                <div>
+                    <label>Date:</label>
                     <input
                         type="date"
                         name="date"
                         value={workoutData.date}
                         onChange={handleChange}
+                        required
                     />
-                </label>
-                <br />
+                </div>
 
                 <button type="submit">Update Workout</button>
             </form>
