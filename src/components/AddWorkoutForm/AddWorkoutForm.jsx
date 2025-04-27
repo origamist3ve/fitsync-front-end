@@ -2,138 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addWorkout } from "../../services/workoutService";
 import "./AddWorkoutForm.css";
+import workoutOptions from "../WorkoutOptions/WorkoutsOptions.jsx"
 
-const workoutOptions = {
-  Chest: [
-    "Flat Barbell Bench Press",
-    "Incline Dumbbell Press",
-    "Push-ups",
-    "Chest Fly (Machine)",
-    "Cable Crossover",
-    "Decline Barbell Bench Press",
-    "Dumbbell Chest Press",
-  ],
-  Biceps: [
-    "Barbell Bicep Curl",
-    "Dumbbell Hammer Curl",
-    "Preacher Curl",
-    "Concentration Curl",
-    "EZ-Bar Curl",
-    "Cable Bicep Curl",
-    "Zottman Curl",
-  ],
-  Shoulders: [
-    "Overhead Barbell Press",
-    "Seated Dumbbell Press",
-    "Lateral Raises",
-    "Front Dumbbell Raise",
-    "Face Pulls",
-    "Arnold Press",
-    "Reverse Fly",
-  ],
-  Legs: [
-    "Barbell Squat",
-    "Walking Lunges",
-    "Leg Press Machine",
-    "Romanian Deadlift",
-    "Calf Raises",
-    "Bulgarian Split Squat",
-    "Step-ups with Dumbbells",
-  ],
-  Back: [
-    "Pull-ups",
-    "Deadlifts",
-    "Seated Cable Row",
-    "Bent-over Barbell Row",
-    "Lat Pulldown",
-    "T-Bar Row",
-    "Straight-Arm Pulldown",
-  ],
-  Triceps: [
-    "Tricep Rope Pushdown",
-    "Skull Crushers",
-    "Close-Grip Bench Press",
-    "Overhead Dumbbell Extension",
-    "Dips (Parallel Bars)",
-  ],
-  Core: [
-    "Planks",
-    "Hanging Leg Raises",
-    "Russian Twists",
-    "Bicycle Crunches",
-    "Mountain Climbers",
-    "V-Ups",
-    "Flutter Kicks",
-  ],
-  Swimming: [
-    "Freestyle Laps",
-    "Breaststroke",
-    "Backstroke",
-    "Butterfly Stroke",
-    "Underwater Kicking Drills",
-    "Flip Turns Practice",
-    "Sprint Intervals (50m)",
-  ],
-  Cardio: [
-    "Treadmill Running",
-    "Outdoor Running",
-    "Jump Rope",
-    "Stationary Bike",
-    "Rowing Machine",
-    "Elliptical Trainer",
-    "Stair Climber",
-  ],
-  HIIT: [
-    "Tabata Circuit",
-    "Burpees",
-    "High Knees",
-    "Jump Squats",
-    "Battle Ropes",
-    "Box Jumps",
-    "Mountain Climbers",
-  ],
-  Flexibility: [
-    "Yoga Session",
-    "Static Stretching",
-    "Dynamic Stretching",
-    "Pigeon Pose",
-    "Downward Dog",
-    "Seated Forward Fold",
-    "Hip Flexor Stretch",
-  ],
-  Mobility: [
-    "Foam Rolling",
-    "Ankle Mobility Drills",
-    "Shoulder Mobility Circles",
-    "Hip Openers",
-    "Spinal Twists",
-  ],
-  Egaming: [
-    "Posture Correction Stretching",
-    "Neck Mobility Routine",
-    "Wrist Flexibility Drills",
-    "Seated Core Stabilization",
-    "Forearm Strengthening with Light Dumbbells",
-    "Eye Relaxation Exercises",
-    "Finger Stretching and Hand Mobility",
-  ],
-  Boxing: [
-    "Heavy Bag Work",
-    "Speed Bag Training",
-    "Shadow Boxing",
-    "Jump Rope Warm-up",
-    "Focus Mitts Drills",
-    "Defensive Slipping Drills",
-  ],
-  Crossfit: [
-    "AMRAP Workouts",
-    "EMOM Routines",
-    "Kettlebell Swings",
-    "Wall Balls",
-    "Double-unders",
-    "Thrusters",
-  ],
-};
 
 
 const AddWorkoutForm = () => {
@@ -144,22 +14,17 @@ const AddWorkoutForm = () => {
     workout: "",
     duration: "",
     date: "",
-    sets: "", // 👈 you already have sets here
+    sets: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+      ...(name === "workoutType" && { workout: "" }), // if workoutType changes, reset workout
     }));
-
-    if (name === "workoutType") {
-      setFormData((prev) => ({
-        ...prev,
-        workout: "",
-      }));
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -168,7 +33,7 @@ const AddWorkoutForm = () => {
       const token = localStorage.getItem("token");
       const workoutData = {
         ...formData,
-        date: new Date(formData.date).getTime(),
+        date: new Date(formData.date).getTime(), // Convert date to timestamp
       };
 
       await addWorkout(workoutData, token);
@@ -182,7 +47,7 @@ const AddWorkoutForm = () => {
       <main>
         <h2>Add a New Workout</h2>
         <form onSubmit={handleSubmit}>
-          {/* Workout Type select */}
+          {/* Workout Type */}
           <div>
             <label>Workout Type:</label>
             <select
@@ -200,7 +65,7 @@ const AddWorkoutForm = () => {
             </select>
           </div>
 
-          {/* Workout select */}
+          {/* Specific Workout */}
           <div>
             <label>Workout:</label>
             <select
@@ -220,7 +85,7 @@ const AddWorkoutForm = () => {
             </select>
           </div>
 
-          {/* Sets input */}
+          {/* Sets */}
           <div>
             <label>Sets:</label>
             <input
@@ -234,7 +99,7 @@ const AddWorkoutForm = () => {
             />
           </div>
 
-          {/* Duration input */}
+          {/* Duration */}
           <div>
             <label>Duration (minutes):</label>
             <input
@@ -246,7 +111,7 @@ const AddWorkoutForm = () => {
             />
           </div>
 
-          {/* Date input */}
+          {/* Date */}
           <div>
             <label>Date:</label>
             <input
