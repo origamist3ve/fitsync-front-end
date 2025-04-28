@@ -1,11 +1,9 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { signUp } from "../../services/authService.js";
-import { UserContext } from "../../contexts/UserContext.jsx";
 
-function SignUpForm() {
+export default function SignUpForm() {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -21,83 +19,40 @@ function SignUpForm() {
       ...prevFormData,
       [name]: value,
     }));
-
-    // Clear error when typing
-    if (error) setError('');
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (formData.password !== formData.passwordConf) {
-      setError("Passwords do not match!");
-      return;
-    }
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const newUser = await signUp(formData);
-      setUser(newUser); // ✅ setUser immediately after signup
-      navigate("/dashboard"); // Redirect to dashboard after signup
+      await signUp(formData);
+      navigate("/profile");  // ✅ after sign up, user fills out profile
     } catch (err) {
-      console.error("Signup error:", err.message);
-      setError(err.message || "Signup failed. Please try again.");
+      console.error("Sign Up error:", err);
+      setError(err.message);
     }
   };
 
   return (
       <main>
         <h1>Sign Up</h1>
-
-        {/* Error Display */}
-        {error && (
-            <p style={{ color: "red", marginBottom: "1rem", fontWeight: "bold" }}>
-              {error}
-            </p>
-        )}
-
         <form onSubmit={handleSubmit}>
+          {/* Your form fields */}
           <div>
             <label htmlFor="username">Username:</label>
-            <input
-                type="text"
-                id="username"
-                value={formData.username}
-                name="username"
-                onChange={handleChange}
-                required
-            />
+            <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
           </div>
-
           <div>
             <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                value={formData.password}
-                name="password"
-                onChange={handleChange}
-                required
-            />
+            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
           </div>
-
           <div>
             <label htmlFor="confirm">Confirm Password:</label>
-            <input
-                type="password"
-                id="confirm"
-                value={formData.passwordConf}
-                name="passwordConf"
-                onChange={handleChange}
-                required
-            />
+            <input type="password" id="confirm" name="passwordConf" value={formData.passwordConf} onChange={handleChange} required />
           </div>
 
-          <div>
-            <button type="submit">Sign Up</button>
-          </div>
+          <button type="submit">Submit</button>
         </form>
+        {error && <p style={{color: "red"}}>{error}</p>}
       </main>
   );
 }
-
-export default SignUpForm;
