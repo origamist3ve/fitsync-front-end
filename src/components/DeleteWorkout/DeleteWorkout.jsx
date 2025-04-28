@@ -19,7 +19,7 @@ export default function DeleteWorkoutButton({ workoutId, userId, onDelete }) {
 
             onDelete(workoutId);
         } catch (err) {
-            console.error("❌ Error deleting workout:", err.message);
+            console.error(" Error deleting workout:", err.message);
         }
     };
 

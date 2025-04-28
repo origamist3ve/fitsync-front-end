@@ -1,5 +1,3 @@
-// src/data/workoutOptions.js
-
 const workoutOptions = {
     Chest: ["Flat Barbell Bench Press", "Incline Dumbbell Press", "Push-ups", "Chest Fly (Machine)", "Cable Crossover"],
     Biceps: ["Barbell Bicep Curl", "Dumbbell Hammer Curl", "Preacher Curl", "Concentration Curl", "EZ-Bar Curl"],

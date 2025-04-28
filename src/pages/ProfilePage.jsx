@@ -23,7 +23,7 @@ export default function ProfilePage() {
                 if (res.ok) {
                     const user = await res.json();
                     if (user.profile) {
-                        setInitialProfile(user.profile); // profile exists
+                        setInitialProfile(user.profile); 
                     }
                 }
             } catch (err) {
@@ -39,7 +39,7 @@ export default function ProfilePage() {
     const handleProfileSubmit = async (formData) => {
         try {
             const token = localStorage.getItem("token");
-            const method = initialProfile ? "PUT" : "POST"; // 🛠 dynamic method
+            const method = initialProfile ? "PUT" : "POST"; 
             const url = `http://localhost:3000/api/users/profile`;
 
             const res = await fetch(url, {

@@ -1,4 +1,3 @@
-// src/components/ProfileForm/ProfileForm.jsx
 import React, { useState, useEffect } from "react";
 
 export default function ProfileForm({ initialData = {}, onSubmit }) {
@@ -23,7 +22,6 @@ export default function ProfileForm({ initialData = {}, onSubmit }) {
             });
         }
     }, [initialData]);
-    // ✅ Correct dependency: this runs ONCE when initialData loads, no infinite loop.
 
     const handleChange = (e) => {
         const { name, value } = e.target;

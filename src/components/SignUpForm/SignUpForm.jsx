@@ -25,7 +25,7 @@ export default function SignUpForm() {
     e.preventDefault();
     try {
       await signUp(formData);
-      navigate("/profile");  // ✅ after sign up, user fills out profile
+      navigate("/profile");  
     } catch (err) {
       console.error("Sign Up error:", err);
       setError(err.message);
