@@ -29,21 +29,13 @@ export default function DashboardPage({ user }) {
 
         const data = await res.json();
         setWorkouts(data);
-        console.log(data);
       } catch (err) {
-        console.error("❌ Error fetching workouts:", err);
+        console.error(" Error fetching workouts:", err);
       }
     };
 
     fetchWorkouts();
   }, []);
-//   useEffect(() => {
-//     // Fetch user workouts (replace with your real API later)
-//     fetch(`/api/workouts/user/${user._id}`)
-//       .then(res => res.json())
-//       .then(data => setWorkouts(data))
-//       .catch(err => console.error("Failed to fetch workouts", err));
-//   }, [user]);
 
   return (
       <div className="dashboard-page">

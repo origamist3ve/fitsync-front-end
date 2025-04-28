@@ -36,7 +36,7 @@ export default function SignUpForm() {
       <main>
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
-          {/* Your form fields */}
+
           <div>
             <label htmlFor="username">Username:</label>
             <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />

@@ -39,7 +39,7 @@ export default function ProfilePage() {
     const handleProfileSubmit = async (formData) => {
         try {
             const token = localStorage.getItem("token");
-            const method = initialProfile ? "PUT" : "POST"; // 🛠 dynamic method
+            const method = initialProfile ? "PUT" : "POST";
             const url = `http://localhost:3000/api/users/profile`;
 
             const res = await fetch(url, {
@@ -57,7 +57,6 @@ export default function ProfilePage() {
             }
 
             const data = await res.json();
-            console.log("Profile saved successfully!", data);
             navigate("/dashboard");
         } catch (error) {
             console.error("Failed to submit profile:", error);

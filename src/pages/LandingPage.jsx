@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer/Footer.jsx"; // ⬅️ import it
+import Footer from "../components/Footer/Footer.jsx";
 import "./LandingPage.css";
 
 export default function LandingPage() {
@@ -32,7 +32,7 @@ export default function LandingPage() {
                 </div>
             </header>
 
-            {/* Motivational Carousel */}
+
             <section className="carousel-section">
                 <div className="carousel-track">
                     <div className="carousel-item">"Transform your potential into power" 🔥</div>
@@ -42,7 +42,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Footer here */}
             <Footer />
         </div>
     );
