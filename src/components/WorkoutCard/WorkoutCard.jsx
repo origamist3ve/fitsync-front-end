@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import DeleteWorkoutsButton from "../DeleteWorkout/DeleteWorkout.jsx";
 import UpdateWorkoutButton from "../UpdateWorkout/UpdateWorkout.jsx";
 
@@ -8,7 +7,7 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
 
     const [expanded, setExpanded] = useState(false);
     const [comments, setComments] = useState(workout.comments || []);
-    const [comment, setComment] = useState(""); // ✅ For posting comments if allowed
+    const [comment, setComment] = useState("");
     const [loading, setLoading] = useState(false);
 
     const token = localStorage.getItem("token");
@@ -34,7 +33,7 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
 
             const updatedComments = await res.json();
             setComments(updatedComments);
-            setComment(""); // clear input
+            setComment("");
         } catch (err) {
             alert("Failed to post comment");
         } finally {
@@ -52,6 +51,11 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
             }}
             onClick={toggleExpand}
         >
+
+            {workout.user && typeof workout.user === "object" && workout.user.username && (
+                <p><strong>Posted by:</strong> {workout.user.username}</p>
+            )}
+
             <p><strong>Date:</strong> {new Date(workout.date).toLocaleDateString()}</p>
             <p><strong>Time:</strong> {new Date(workout.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
             <p><strong>Type:</strong> {workout.workoutType}</p>
@@ -64,7 +68,6 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
                         <p><strong>Sets:</strong> {workout.sets}</p>
                     )}
 
-                    {/* Edit & Delete buttons */}
                     {showDelete && isOwner && (
                         <div className="button-group">
                             <DeleteWorkoutsButton
@@ -76,7 +79,6 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
                         </div>
                     )}
 
-                    {/* Comments section */}
                     <div className="comments-section" onClick={(e) => e.stopPropagation()}>
                         <ul>
                             <h2>Comments</h2>
@@ -91,21 +93,28 @@ export default function WorkoutCard({ workout, onDelete, onUpdate, userId, showD
                             )}
                         </ul>
 
-                        {/* Only show comment posting if allowCommentPost is true */}
                         {allowCommentPost && (
-                            <form onSubmit={handleCommentSubmit} style={{ marginTop: "1rem" }}>
+                            <form onSubmit={handleCommentSubmit} style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <input
                                     type="text"
                                     placeholder="Add a comment..."
                                     value={comment}
                                     onChange={(e) => setComment(e.target.value)}
                                     disabled={loading}
-                                    style={{ width: "80%", marginRight: "0.5rem" }}
+                                    style={{ width: "100%", padding: "0.75rem", borderRadius: "8px", border: "1px solid #ccc" }}
                                 />
                                 <button
                                     type="submit"
                                     disabled={loading || !comment.trim()}
-                                    style={{ padding: "0.5rem 1rem" }}
+                                    style={{
+                                        padding: "0.75rem 1rem",
+                                        background: "var(--fitsync-orange, #FF5733)",
+                                        color: "white",
+                                        fontWeight: "600",
+                                        borderRadius: "8px",
+                                        border: "none",
+                                        cursor: "pointer",
+                                    }}
                                 >
                                     {loading ? "Posting..." : "Post"}
                                 </button>

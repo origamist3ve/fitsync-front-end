@@ -27,25 +27,21 @@ function NavBar() {
                     <Link to="/dashboard">Dashboard</Link>
                   </li>
                   <li>
-                    <button className="signout-btn" onClick={handleSignOut}>
-                      Sign Out
-                    </button>
+                    <Link to="/profile">Profile</Link> {/* ✅ New */}
+                  </li>
+                  <li>
+                    <button className="signout-btn" onClick={handleSignOut}>Sign Out</button>
                   </li>
                 </>
             ) : (
                 <>
-                  <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/sign-up">Sign Up</Link>
-                  </li>
-                  <li>
-                    <Link to="/sign-in">Sign In</Link>
-                  </li>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/sign-up">Sign Up</Link></li>
+                  <li><Link to="/sign-in">Sign In</Link></li>
                 </>
             )}
           </ul>
+
         </div>
       </nav>
   );
