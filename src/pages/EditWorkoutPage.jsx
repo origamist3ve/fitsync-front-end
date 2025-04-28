@@ -96,7 +96,7 @@ export default function EditWorkoutPage() {
         <div className="edit-workout-page">
             <h2>Edit Workout</h2>
             <form onSubmit={handleSubmit}>
-                {/* Workout Type select */}
+
                 <div>
                     <label>Workout Type:</label>
                     <select
@@ -114,7 +114,7 @@ export default function EditWorkoutPage() {
                     </select>
                 </div>
 
-                {/* Workout select */}
+
                 <div>
                     <label>Workout:</label>
                     <select
@@ -134,7 +134,6 @@ export default function EditWorkoutPage() {
                     </select>
                 </div>
 
-                {/* Sets input */}
                 <div>
                     <label>Sets:</label>
                     <input
@@ -148,7 +147,6 @@ export default function EditWorkoutPage() {
                     />
                 </div>
 
-                {/* Duration input */}
                 <div>
                     <label>Duration (minutes):</label>
                     <input
@@ -160,7 +158,7 @@ export default function EditWorkoutPage() {
                     />
                 </div>
 
-                {/* Date input */}
+
                 <div>
                     <label>Date:</label>
                     <input

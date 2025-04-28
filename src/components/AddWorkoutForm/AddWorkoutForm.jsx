@@ -39,7 +39,8 @@ const AddWorkoutForm = () => {
       await addWorkout(workoutData, token);
       navigate("/dashboard");
     } catch (err) {
-      console.error("Failed to add workout:", err);
+
+      console.error(" Failed to add workout:", err);
     }
   };
 
@@ -47,7 +48,7 @@ const AddWorkoutForm = () => {
       <main>
         <h2>Add a New Workout</h2>
         <form onSubmit={handleSubmit}>
-          {/* Workout Type */}
+
           <div>
             <label>Workout Type:</label>
             <select
@@ -65,7 +66,7 @@ const AddWorkoutForm = () => {
             </select>
           </div>
 
-          {/* Specific Workout */}
+
           <div>
             <label>Workout:</label>
             <select
@@ -85,7 +86,7 @@ const AddWorkoutForm = () => {
             </select>
           </div>
 
-          {/* Sets */}
+
           <div>
             <label>Sets:</label>
             <input
@@ -99,7 +100,7 @@ const AddWorkoutForm = () => {
             />
           </div>
 
-          {/* Duration */}
+
           <div>
             <label>Duration (minutes):</label>
             <input
@@ -111,7 +112,7 @@ const AddWorkoutForm = () => {
             />
           </div>
 
-          {/* Date */}
+
           <div>
             <label>Date:</label>
             <input
