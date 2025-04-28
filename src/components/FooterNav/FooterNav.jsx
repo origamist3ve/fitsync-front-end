@@ -18,8 +18,6 @@ export default function FooterNav() {
     }}>
       <button onClick={() => navigate("/feed")}>Feed</button>
       <button onClick={() => navigate("/workout/new")}>➕ Add</button>
-        //Work in progress
-      {/*<button onClick={() => navigate("/progress")}>Progress</button>*/}
         <button onClick={() => navigate("/dashboard")}>Dashboard</button>
     </footer>
   );

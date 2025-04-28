@@ -1,26 +1,76 @@
-// import React from "react";
-// import ProfileForm from "../components/Profile/ProfileForm.jsx";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import ProfileForm from "../components/ProfileForm/ProfileForm.jsx";
 
-// export default function ProfilePage() {
-//   const navigate = useNavigate();
+export default function ProfilePage() {
+    const navigate = useNavigate();
+    const [initialProfile, setInitialProfile] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-//   const handleProfileSubmit = async (formData) => {
-//     try {
-//       const response = await axios.post("/api/profile", formData);
-//       console.log("Profile created:", response.data);
-//       navigate("/dashboard"); // or wherever you want the user to go after saving
-//     } catch (error) {
-//       console.error("Failed to submit profile:", error);
-//       alert("Something went wrong saving your profile. Try again!");
-//     }
-//   };
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                const decodedToken = JSON.parse(atob(token.split(".")[1]));
+                const userId = decodedToken.payload._id;
 
-//   return (
-//     <div className="profile-page">
-//       <h1>Let’s Create Your FitSync Profile</h1>
-//       <ProfileForm onSubmit={handleProfileSubmit} />
-//     </div>
-//   );
-// }
+                const res = await fetch(`http://localhost:3000/api/users/${userId}`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
+
+                if (res.ok) {
+                    const user = await res.json();
+                    if (user.profile) {
+                        setInitialProfile(user.profile); // profile exists
+                    }
+                }
+            } catch (err) {
+                console.error("Failed to fetch profile:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProfile();
+    }, []);
+
+    const handleProfileSubmit = async (formData) => {
+        try {
+            const token = localStorage.getItem("token");
+            const method = initialProfile ? "PUT" : "POST"; // 🛠 dynamic method
+            const url = `http://localhost:3000/api/users/profile`;
+
+            const res = await fetch(url, {
+                method,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(errorText);
+            }
+
+            const data = await res.json();
+            console.log("Profile saved successfully!", data);
+            navigate("/dashboard");
+        } catch (error) {
+            console.error("Failed to submit profile:", error);
+            alert("Something went wrong saving your profile. Try again!");
+        }
+    };
+
+    if (loading) return <p>Loading Profile...</p>;
+
+    return (
+        <div className="profile-page">
+            <h1>{initialProfile ? "Edit Your Profile" : "Create Your FitSync Profile"}</h1>
+            <ProfileForm initialData={initialProfile} onSubmit={handleProfileSubmit} />
+        </div>
+    );
+}
