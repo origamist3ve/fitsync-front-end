@@ -1,4 +1,3 @@
-// src/components/ProfileForm/ProfileForm.jsx
 import React, { useState, useEffect } from "react";
 
 export default function ProfileForm({ initialData = {}, onSubmit }) {

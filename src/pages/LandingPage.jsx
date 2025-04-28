@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer/Footer.jsx";
+
 import "./LandingPage.css";
 
 export default function LandingPage() {

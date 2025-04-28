@@ -54,7 +54,7 @@ export default function EditWorkoutPage() {
         setWorkoutData((prev) => ({
             ...prev,
             [name]: value,
-            ...(name === "workoutType" && { workout: "" }), // if workoutType changes, reset workout
+            ...(name === "workoutType" && { workout: "" }), 
         }));
     };
 

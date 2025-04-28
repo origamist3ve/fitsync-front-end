@@ -23,7 +23,7 @@ const AddWorkoutForm = () => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-      ...(name === "workoutType" && { workout: "" }), // if workoutType changes, reset workout
+      ...(name === "workoutType" && { workout: "" }), 
     }));
   };
 
@@ -33,12 +33,13 @@ const AddWorkoutForm = () => {
       const token = localStorage.getItem("token");
       const workoutData = {
         ...formData,
-        date: new Date(formData.date).getTime(), // Convert date to timestamp
+        date: new Date(formData.date).getTime(), 
       };
 
       await addWorkout(workoutData, token);
       navigate("/dashboard");
     } catch (err) {
+
       console.error(" Failed to add workout:", err);
     }
   };

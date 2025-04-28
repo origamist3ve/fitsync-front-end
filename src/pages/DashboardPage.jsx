@@ -37,6 +37,7 @@ export default function DashboardPage({ user }) {
     fetchWorkouts();
   }, []);
 
+
   return (
       <div className="dashboard-page">
         <DashboardHeader user={user} workouts={workouts} />

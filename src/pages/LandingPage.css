@@ -118,6 +118,7 @@
     100% { transform: translateX(-50%); }
 }
 
+
 @media (max-width: 768px) {
     .title {
         font-size: 2.2rem;

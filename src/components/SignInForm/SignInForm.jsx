@@ -12,7 +12,7 @@ const SignInForm = () => {
     password: "",
   });
 
-  const [error, setError] = useState(""); // 🆕 state for error message
+  const [error, setError] = useState(""); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +21,7 @@ const SignInForm = () => {
       [name]: value,
     }));
 
-    // Clear error when user starts typing again
+  
     if (error) setError("");
   };
 
@@ -38,7 +38,7 @@ const SignInForm = () => {
       navigate("/dashboard");
     } catch (err) {
       console.error("Sign in failed:", err.message);
-      setError("Invalid credentials. Please try again."); // 🔥 nice user-friendly error
+      setError("Invalid credentials. Please try again."); 
     }
   };
 

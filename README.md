@@ -1,12 +1,38 @@
-# React + Vite
+# Fit-sync
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Fit-sync is a fitness app that allows fitness enthusiast to create, track and share their workouts with other users. Users can log their workouts and observe their progress over time and learn new training styles from others.  
 
-Currently, two official plugins are available:
+## Features
+- Sign-up & sign-in
+- custom profile
+- Read, Create, edit, and delete workouts
+- Workout feed consisting workouts from all fit sync users.
+- Users can comment on eachother's workouts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+- React
+- Chat Gpt
 
-## Expanding the ESLint configuration
+## Preview
+**Landing Page**
+![fit-sync](./assets/Fit%20sync%20landing%20pag.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**User Dashboard**
+![fit-sync](./assets/User%20dashboard.png) 
+
+**Profile Page**
+![fit-sync](./assets/User%20profile%20page.png)
+
+**Workout feed**
+![fit-sync](./assets/Workout%20feed.png)
+
+## Next Steps
+- Add images to the feed
+- Acess query recommended workouts
+- Track overall health
+
+## Links
+- [Planning Material](https://trello.com/invite/b/68064715e2847402c5a9dcdf/ATTI9b9c6dc449b1ba176ff8472f5db9c1efDE9A2515/ga-collaboration-fitsync)
+- [Backend](https://github.com/origamist3ve/fitsync-back-end)
+- [Frontend](https://github.com/origamist3ve/fitsync-front-end)
+- [Deployed App](https://fitsync-front-end-production.up.railway.app)
