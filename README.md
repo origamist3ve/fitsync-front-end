@@ -30,3 +30,5 @@ Fit-sync is a fitness app that allows fitness enthusiast to create, track and sh
 - Add images to the feed
 - Acess query recommended workouts
 - Track overall health
+
+## Links
