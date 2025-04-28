@@ -10,7 +10,7 @@
     margin: 0;
     border: none;
     display: flex;
-    align-items: center; /* Center everything vertically inside navbar */
+    align-items: center; 
     box-shadow:
             0 2px 4px rgba(0, 0, 0, 0.1),
             0 8px 12px rgba(0, 0, 0, 0.08);
@@ -23,15 +23,15 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Force both logo and links center */
+    align-items: center; 
     padding: 0 1.5rem;
-    height: 100%; /* ⬅️ Important: match navbar height */
+    height: 100%; 
 }
 
 .logo {
     display: flex;
     align-items: center;
-    height: 100%; /* ⬅️ Important: stretch logo to full height */
+    height: 100%; 
 }
 
 .logo a {
@@ -41,7 +41,7 @@
     text-decoration: none;
     transition: color 0.2s ease;
     display: flex;
-    align-items: center; /* ⬅️ Make text inside centered */
+    align-items: center; 
     height: 100%;
 }
 

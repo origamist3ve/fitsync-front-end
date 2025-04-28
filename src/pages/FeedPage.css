@@ -2,8 +2,8 @@
   background: white;
   border-radius: 16px;
   padding: 2rem;
-  max-width: 900px; /* Bigger card */
-  margin: 1.5rem auto; /* more spacing between cards */
+  max-width: 900px; 
+  margin: 1.5rem auto; 
   box-shadow:
           0 2px 8px rgba(0, 0, 0, 0.05),
           0 4px 12px rgba(0, 0, 0, 0.08);
@@ -31,7 +31,7 @@
   margin-right: 0.5rem;
 }
 
-/* Expanded content */
+
 .workout-card .comments-section {
   margin-top: 1.5rem;
   padding-top: 1rem;
@@ -50,7 +50,7 @@
   color: #555;
 }
 
-/* Comment form */
+
 .workout-card form {
   margin-top: 1rem;
   display: flex;
@@ -80,7 +80,7 @@
   background: #e04d29;
 }
 
-/* Delete/Update Buttons */
+
 .workout-card .button-group {
   margin-top: 1rem;
   display: flex;

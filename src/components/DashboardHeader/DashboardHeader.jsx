@@ -5,7 +5,7 @@ export default function DashboardHeader({ user, workouts = [] }) {
   if (!user) return <p>Loading user data...</p>;
 
   const lastWorkoutDate = workouts.length
-    ? new Date(workouts[0].date) // assumes newest first
+    ? new Date(workouts[0].date) 
     : null;
 
   const daysSinceLast = lastWorkoutDate
