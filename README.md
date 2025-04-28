@@ -32,4 +32,4 @@ Fit-sync is a fitness app that allows fitness enthusiast to create, track and sh
 - Track overall health
 
 ## Links
-(Planning Material)[https://trello.com/invite/b/68064715e2847402c5a9dcdf/ATTI9b9c6dc449b1ba176ff8472f5db9c1efDE9A2515/ga-collaboration-fitsync]
+[Planning Material](https://trello.com/invite/b/68064715e2847402c5a9dcdf/ATTI9b9c6dc449b1ba176ff8472f5db9c1efDE9A2515/ga-collaboration-fitsync)
