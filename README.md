@@ -11,7 +11,10 @@ Fit-sync is a fitness app that allows fitness enthusiast to create, track and sh
 
 ## Technologies
 - React
-- Chat Gpt
+- MongoDB
+- Mongoose
+- JWT Authentication
+- REST API
 
 ## Preview
 **Landing Page**
